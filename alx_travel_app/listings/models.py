@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import User  # assuming you want to link Booking or Review to a user
+from django.contrib.auth.models import User  
+from django.db import models
 
 class Listing(models.Model):
     title = models.CharField(max_length=255)
@@ -34,3 +35,17 @@ class Review(models.Model):
 
     def __str__(self):
         return f'Review for {self.listing} by {self.user}'
+    
+class Payment(models.Model):
+    booking_reference = models.CharField(max_length=100)
+    transaction_id = models.CharField(max_length=100)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    status = models.CharField(max_length=50, choices=[
+        ('Pending', 'Pending'),
+        ('Completed', 'Completed'),
+        ('Failed', 'Failed')
+    ])
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.booking_reference} - {self.status}"
