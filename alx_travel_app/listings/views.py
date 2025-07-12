@@ -5,6 +5,7 @@ import requests
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Payment
+from .tasks import send_booking_confirmation_email
 import uuid
 
 class ListingViewSet(viewsets.ModelViewSet):
@@ -69,3 +70,10 @@ def verify_payment(request):
         return Response({"error": "Payment not found."}, status=404)
 
     return Response(data)
+
+
+def perform_create(self, serializer):
+    booking = serializer.save()
+    email = booking.user.email
+    details = str(booking)
+    send_booking_confirmation_email.delay(email, details)
