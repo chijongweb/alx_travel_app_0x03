@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'alxtravelapp.urls'
+ROOT_URLCONF = 'alx_travel_app.urls'
 
 TEMPLATES = [
     {
