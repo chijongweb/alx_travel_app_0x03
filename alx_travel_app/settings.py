@@ -78,7 +78,7 @@ DATABASES = {
         'NAME': env('DB_NAME', default='alx_travel_app'),
         'USER': env('DB_USER', default='root'),
         'PASSWORD': env('DB_PASSWORD', default='T!g3rfish'),
-        'HOST': env('DB_HOST', default='localhost'),
+        'HOST': 'chijongweb.mysql.pythonanywhere-services.com',
         'PORT': env('DB_PORT', default='3306'),
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
