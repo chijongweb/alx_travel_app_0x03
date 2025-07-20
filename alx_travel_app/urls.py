@@ -33,6 +33,6 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('listings.urls')),  # or whatever app you use
+    path('api/', include('alx_travel_app.listings.urls')),  # or whatever app you use
     re_path(r'^swagger/$', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
